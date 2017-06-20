@@ -1,0 +1,35 @@
+package web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import controller.UserController;
+
+public class ServletExam extends HttpServlet{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    }
+    
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String writeStr = "";
+        UserController ul = new UserController(req);
+        writeStr = ul.doAction();
+    	doProcess(resp, writeStr);
+    }
+    
+    public void doProcess(HttpServletResponse resp, String writeStr) throws IOException{
+    	resp.setContentType("text/html; charset=UTF-8");
+
+        PrintWriter out = resp.getWriter();
+        out.println(writeStr);
+    	
+    }
+}

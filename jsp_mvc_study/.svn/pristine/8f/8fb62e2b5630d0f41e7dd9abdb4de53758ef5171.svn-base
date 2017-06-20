@@ -1,0 +1,17 @@
+package exam;
+
+import java.lang.reflect.Method;
+
+import bean.TUser;
+
+public class Exam {
+
+	public static void main(String[]args){
+		TUser user = new TUser();
+		
+		Method[] meths = user.getClass().getMethods();
+		for(Method meth : meths){
+			System.out.println(meth.toString());
+		}
+	}
+}

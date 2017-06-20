@@ -1,0 +1,36 @@
+package web;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import bean.Board;
+import service.BoardService;
+import service.implement.BoardServiceImpl;
+
+public class BoardServlet extends HttpServlet{
+	private static final long serialVersionUID = 1L;
+
+	private BoardService bs = new BoardServiceImpl();
+	
+	public void doGet(HttpServletRequest request, HttpServletResponse resp) 
+			throws IOException {
+		//BOARDLIST
+		//BOARDWRITE
+		//BOARDMODIFY
+		//BOARDDELETE
+		//BOARDVIEW
+		String action = request.getParameter("action");
+		if(action.equals("BOARDLIST")){
+			List<Board> boardList = bs.getBoardList();
+		}
+    }	
+    
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+    }
+    
+}

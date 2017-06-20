@@ -1,0 +1,16 @@
+package service;
+import java.sql.SQLException;
+import java.util.Map;
+
+import bean.TUser;
+import dao.UserDAO;;
+
+public class UserLoginService {
+
+	public TUser login(Map paramMap) {
+		String sql="Select USERID, USERPWD from tuser2 where USERID=:userid and USERPWD=:userpwd";
+		UserDAO udao = new UserDAO();
+		TUser tu = udao.getUser(sql, paramMap);
+		return tu;
+	}
+}
