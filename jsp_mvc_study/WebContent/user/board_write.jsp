@@ -50,7 +50,7 @@ function doBoardWrite(){
 </script>
 <table border="1" cellspacing="0" cellpadding="0">
 	<tr>
-		<td colspan="2"> 로그인 </td> 
+		<td colspan="2"> 게시글 작성 </td> 
 	</tr>
 	<tr>
 		<td> 제목 </td>

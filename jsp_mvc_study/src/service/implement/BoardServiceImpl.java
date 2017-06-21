@@ -18,16 +18,9 @@ public class BoardServiceImpl implements BoardService {
 		List<Board> boardList = new ArrayList<Board>();
 		try {
 			Connection con = DBConn.getCon();
-			String sql = "select board_num, board_title, board_content, board_Writer, ";
-			sql += "board_cdate, board_modifier, board_mdate from board where 1=1 ";
-			if(board.getBoardTitle()!=null && !board.getBoardTitle().equals("")){
-				sql += " and board_title like ?";
-			}
+			String sql = "call get_board_list(?)";
 			PreparedStatement pstmt = con.prepareStatement(sql);
-
-			if(board.getBoardTitle()!=null && !board.getBoardTitle().equals("")){
-				pstmt.setString(1, "%" + board.getBoardTitle() + "%");
-			}
+			pstmt.setString(1, board.getBoardTitle());
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				Board board1 = new Board();
@@ -58,17 +51,15 @@ public class BoardServiceImpl implements BoardService {
 	public boolean doBoardWrite(Board board) {
 		try {
 			Connection con = DBConn.getCon();
-			String sql = "insert into board(board_title, board_content, board_writer"
-						+",board_cdate, board_modifier, board_mdate)";
-			sql += " values(?,?,?,now(),?,now())";
+			String sql = "call insert_board_list(?,?,?)";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, board.getBoardTitle());
 			pstmt.setString(2, board.getBoardContent());
 			pstmt.setString(3, board.getBoardWriter());
-			pstmt.setString(4, board.getBoardModifier());
 			int result = pstmt.executeUpdate();
 			if(result==1){
 				return true;
+//				게시글 작성 완료와 함께 게시판리스트로 이동 구현
 			}
 		}catch(Exception e){
 			e.printStackTrace();

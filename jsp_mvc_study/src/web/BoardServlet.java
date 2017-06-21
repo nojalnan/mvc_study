@@ -26,7 +26,7 @@ public class BoardServlet extends HttpServlet{
 		String result ="";
 		result += "<table border='1'>";
 		result += "<tr>";
-		result += "<td colspan='5' align='center'>제목 : <input type='text' name='search_title' id='search_title'/>"
+		result += "<td colspan='6' align='center'>제목 : <input type='text' name='search_title' id='search_title'/>"
 				+ "<input type='button' value='검색' onclick='doSearchBoard()'/></td>";
 		result += "</tr>";
 		result += "<tr>";
@@ -34,11 +34,12 @@ public class BoardServlet extends HttpServlet{
 		result += "<td>제목</td>";
 		result += "<td>작성자</td>";
 		result += "<td>작성일자</td>";
+		result += "<td>수정버튼</td>";
 		result += "<td>삭제버튼</td>";
 		result += "</tr>";
 		if(boardList.size()==0){
 			result += "<tr>";
-			result += "<td colspan='5' align='center'>게시물이 존재하지 않습니다.</td>";
+			result += "<td colspan='6' align='center'>게시물이 존재하지 않습니다.</td>";
 			result += "</tr>";
 		}
 		for(Board b : boardList){
@@ -47,11 +48,12 @@ public class BoardServlet extends HttpServlet{
 			result += "<td>" + b.getBoardTitle() +"</td>";
 			result += "<td>" + b.getBoardWriter() +"</td>";
 			result += "<td>" + b.getBoardCDate() +"</td>";
+			result += "<td><input type='button' value='수정' onclick='doBoardModification(\"" + b.getBoardNum() + "\", \"" + b.getBoardWriter() + "\")'/></td>";
 			result += "<td><input type='button' value='삭제' onclick='doBoardDelete(\"" + b.getBoardNum() + "\", \"" + b.getBoardWriter() + "\")'/></td>";
 			result += "</tr>";
 		}
 		result += "<tr>";
-		result += "<td colspan='5' align='right'><input type='button' value='게시글작성' onclick='goWriteJsp()'/></td>";
+		result += "<td colspan='6' align='right'><input type='button' value='게시글작성' onclick='goWriteJsp()'/></td>";
 		result += "</tr>";
 		result += "</table border>";
 		return result;

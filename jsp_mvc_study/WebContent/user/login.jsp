@@ -136,6 +136,7 @@ function doLogin(){
 	xmlHttpObj = getHttpXmlObj(); 
 	var userid = document.getElementById("id").value;
 	var userpwd = document.getElementById("pwd").value;
+	var result = location.href="/user/main_page.jsp";
    	//통신할 jsp명입니다.
    	var url = "./loginAction.user?";
    	var method = "get";
@@ -145,7 +146,7 @@ function doLogin(){
    	
    	xmlHttpObj.onreadystatechange=function(){
    		if (xmlHttpObj.readyState==4 && xmlHttpObj.status==200){
-       		document.getElementById("resultDiv").innerHTML=decodeURIComponent(xmlHttpObj.responseText);
+       		document.getElementById("resultDiv").innerHTML=result;
         }
     }
     //open으로 위의 기술한 jsp명과 통신을 연결합니다. 
