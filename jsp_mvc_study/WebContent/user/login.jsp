@@ -62,58 +62,6 @@ function doBoardDelete(boardNum,boardWriter){
 function goWriteJsp(){
 	location.href="./user/board_write.jsp";
 }
-function doDelete(userNum){
-	xmlHttpObj = getHttpXmlObj(); 
-   	var url = "./loginAction.user?";
-   	var method = "get";
-   	var params = "action=SIGNOUT&user_num=" + userNum;
-
-   	var sync = true;
-   	
-   	xmlHttpObj.onreadystatechange=function(){
-   		if (xmlHttpObj.readyState==4 && xmlHttpObj.status==200){
-       		document.getElementById("resultDiv").innerHTML=decodeURIComponent(xmlHttpObj.responseText);
-        }
-    }
-    //open으로 위의 기술한 jsp명과 통신을 연결합니다. 
-   	xmlHttpObj.open(method, url+params, sync);
-   	xmlHttpObj.send();
-}
-function doLogout(){
-	xmlHttpObj = getHttpXmlObj(); 
-   	var url = "./loginAction.user?";
-   	var method = "get";
-   	var params = "action=LOGOUT";
-
-   	var sync = true;
-   	
-   	xmlHttpObj.onreadystatechange=function(){
-   		if (xmlHttpObj.readyState==4 && xmlHttpObj.status==200){
-       		document.getElementById("resultDiv").innerHTML=decodeURIComponent(xmlHttpObj.responseText);
-        }
-    }
-    //open으로 위의 기술한 jsp명과 통신을 연결합니다. 
-   	xmlHttpObj.open(method, url+params, sync);
-   	xmlHttpObj.send();
-}
-
-function doGetUserList(){
-	xmlHttpObj = getHttpXmlObj(); 
-   	var url = "./loginAction.user?";
-   	var method = "get";
-   	var params = "action=USERLIST";
-
-   	var sync = true;
-   	
-   	xmlHttpObj.onreadystatechange=function(){
-   		if (xmlHttpObj.readyState==4 && xmlHttpObj.status==200){
-       		document.getElementById("resultDiv").innerHTML=decodeURIComponent(xmlHttpObj.responseText);
-        }
-    }
-    //open으로 위의 기술한 jsp명과 통신을 연결합니다. 
-   	xmlHttpObj.open(method, url+params, sync);
-   	xmlHttpObj.send();
-}
 
 function doSearchBoard(){
 	var searchTitle = document.getElementById('search_title').value;
@@ -132,11 +80,12 @@ function doSearchBoard(){
    	xmlHttpObj.open(method, url+params, sync);
    	xmlHttpObj.send();
 }
+
 function doLogin(){
+	//로그인 성공시에만 페이지 이동할 수 있도록 설정해야함
 	xmlHttpObj = getHttpXmlObj(); 
 	var userid = document.getElementById("id").value;
 	var userpwd = document.getElementById("pwd").value;
-	var result = location.href="/user/main_page.jsp";
    	//통신할 jsp명입니다.
    	var url = "./loginAction.user?";
    	var method = "get";
@@ -144,9 +93,10 @@ function doLogin(){
 
    	var sync = true;
    	
-   	xmlHttpObj.onreadystatechange=function(){
-   		if (xmlHttpObj.readyState==4 && xmlHttpObj.status==200){
-       		document.getElementById("resultDiv").innerHTML=result;
+	xmlHttpObj.onreadystatechange=function(){
+   		if (xmlHttpObj.readyState==4 && xmlHttpObj.status==200){   			
+   	       		document.getElementById("resultDiv").innerHTML=decodeURIComponent(xmlHttpObj.responseText);
+   	       		location.href="/user/main_page.jsp";
         }
     }
     //open으로 위의 기술한 jsp명과 통신을 연결합니다. 

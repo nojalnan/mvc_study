@@ -34,22 +34,13 @@ public class ServletUser extends HttpServlet{
 				session.setAttribute("pwd", pwd);
 				session.setAttribute("name", user.getUserName());
 				session.setAttribute("admin", user.getAdmin());
-				session.setAttribute("board_admin", user.getBoardAdmin());
-				result += id + "님 로그인에 성공 하셨습니다.<input type='button' value='logout'onclick='doLogout()'/>";
-				if(user.getAdmin()==1){
-					result += "<br/><input type='button' value='유저리스트불러오기' onclick='doGetUserList()'/>";
-				}
-				if(user.getBoardAdmin()==1){
-					result += "<br/><input type='button' value='게시판 불러오기' onclick='doGetBoardList()'/>";
-				}
-				
+				session.setAttribute("board_admin", user.getBoardAdmin());	
 			}else{
 				result += id + "님 로그인에 실패 하셨습니다.";
 			}
 		}else if(action.equals("LOGOUT")){
 			id = (String) session.getAttribute("id");
 			us.logout(session);
-			result = id + "님 로그아웃 하셨습니다.";
 		}else if(action.equals("SIGNUP")){
 			String name = request.getParameter("name");
 			String age = request.getParameter("age");
