@@ -52,9 +52,9 @@ function doDelete(userNum){
 	</td>
 	<td width="300" valign="top">
 		<!-- 내용 부분: 시작 -->
-		불러온 내용
+		불러온 내용 
+		<!-- 버튼을 눌러 화면을 불러왔을 경우 원하는 영역에 리스트가 출력되게끔 설정해야함 -->
 		<jsp:include page="/user/user_list.jsp" flush="false" />
-	
 		<br><br><br>
 		<!-- 내용 부분: 끝 -->
 	</td>

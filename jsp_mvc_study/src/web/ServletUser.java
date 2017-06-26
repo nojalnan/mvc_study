@@ -36,7 +36,7 @@ public class ServletUser extends HttpServlet{
 				session.setAttribute("admin", user.getAdmin());
 				session.setAttribute("board_admin", user.getBoardAdmin());	
 			}else{
-				result += id + "님 로그인에 실패 하셨습니다.";
+				result += "false," + id + "님 로그인에 실패 하셨습니다."; //화면 하단에 표시될 수 있는 이유?
 			}
 		}else if(action.equals("LOGOUT")){
 			id = (String) session.getAttribute("id");

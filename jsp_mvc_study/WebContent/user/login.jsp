@@ -94,8 +94,16 @@ function doLogin(){
    	var sync = true;
    	
 	xmlHttpObj.onreadystatechange=function(){
-   		if (xmlHttpObj.readyState==4 && xmlHttpObj.status==200){   			
-   	       		document.getElementById("resultDiv").innerHTML=decodeURIComponent(xmlHttpObj.responseText);
+		//로그인 성공시 생성된 세션 정보를 불러와 세션이 생성됐을 경우에만 메인화면으로 이동할 수 있도록 설정해야함
+   		if (xmlHttpObj.readyState==4 && xmlHttpObj.status==200){   		
+   				var result = decodeURIComponent(xmlHttpObj.responseText);
+   				var loingOk = result.split(",")[0];
+   				var msg = result.split(",")[1];
+   				if(loingOk=="false"){
+   					alert(msg);
+   					return;
+   				}
+   	       		//document.getElementById("resultDiv").innerHTML=
    	       		location.href="/user/main_page.jsp";
         }
     }

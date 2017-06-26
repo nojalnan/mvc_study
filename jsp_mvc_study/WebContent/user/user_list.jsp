@@ -1,12 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ page contentType = "text/html; charset=utf-8" %>
 <script type="text/javascript">
 
 function doGetUserList(){
@@ -22,11 +14,8 @@ function doGetUserList(){
        		document.getElementById("resultDiv").innerHTML=decodeURIComponent(xmlHttpObj.responseText);
         }
     }
-    //openÀ¸·Î À§ÀÇ ±â¼úÇÑ jsp¸í°ú Åë½ÅÀ» ¿¬°áÇÕ´Ï´Ù. 
+    //openìœ¼ë¡œ ìœ„ì˜ ê¸°ìˆ í•œ jspëª…ê³¼ í†µì‹ ì„ ì—°ê²°í•©ë‹ˆë‹¤. 
    	xmlHttpObj.open(method, url+params, sync);
    	xmlHttpObj.send();
 }
 </script>
-
-</body>
-</html>
