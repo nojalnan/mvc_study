@@ -1,2 +1,2 @@
 # mvc_study
-jsp mvc pattern
+java, jsp, javascript, spring
