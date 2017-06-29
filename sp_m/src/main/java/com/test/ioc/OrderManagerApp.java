@@ -1,15 +1,15 @@
 package com.test.ioc;
 
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
-import org.springframework.core.io.FileSystemResource;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class OrderManagerApp {
 
 	public static void main(String[] args){
-		FileSystemResource fsr = new FileSystemResource("src/main/resources/ioc.xml");
-		BeanFactory factory = new XmlBeanFactory(fsr);
-		OrderManger manager = (OrderManger)factory.getBean("orderManager");
-		manager.order();
+//		FileSystemResource fsr = new FileSystemResource("src/main/resources/ioc.xml");
+//		BeanFactory factory = new XmlBeanFactory(fsr);
+		ApplicationContext factory = new ClassPathXmlApplicationContext("classpath:ioc2.xml");
+		OrderManger om = (OrderManger)factory.getBean("orderManager");
+		om.order();
 	}
 }
