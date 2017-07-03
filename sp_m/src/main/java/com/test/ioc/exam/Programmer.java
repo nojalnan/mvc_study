@@ -1,18 +1,27 @@
 package com.test.ioc.exam;
 
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
-@Service
-@Order(value=1)
-public class Programmer implements Emp{
+@Service("programmer")
+public class Programmer implements Emp {
 
 	@Override
-	public void work() {
+	public String work() {
 		// TODO Auto-generated method stub
 		System.out.println("개발자가 일을 합니다");
+		return "개발자가 일을 합니다";
 	}
-	
-	
+
+	@Override
+	public void gotoOffice() {
+		// TODO Auto-generated method stub
+		System.out.println("개발자가 출근을 합니다");
+	}
+
+	@Override
+	public void getoffWork() {
+		// TODO Auto-generated method stub
+		System.out.println("개발자가 출근을 합니다");
+	}
 
 }
