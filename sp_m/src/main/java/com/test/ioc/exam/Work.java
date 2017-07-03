@@ -10,16 +10,19 @@ public class Work {
 //	List<Emp> empList;
 
 	public Work(){
-//		empList = new ArrayList<Emp>();
-//		empList.add(new Programmer());
-//		empList.add(new Designer());
+
 	}
 
 	public static void main(String[] args) {
+<<<<<<< HEAD
 		ApplicationContext context = new ClassPathXmlApplicationContext("ioc4.xml");
 		Working dev = (Working) context.getBean("working");
 		dev.work();
 //		Work w = new Work();
+=======
+		ApplicationContext factory = new ClassPathXmlApplicationContext("classpath:ioc3.xml");
+		Work w = (Work) factory.getBean("work");
+>>>>>>> branch 'master' of https://github.com/nojalnan/mvc_study.git
 		
 //		for (Emp e : w.empList) {
 //			e.work();
