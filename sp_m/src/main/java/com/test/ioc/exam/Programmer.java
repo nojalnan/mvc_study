@@ -1,11 +1,13 @@
 package com.test.ioc.exam;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service("programmer")
+//@Service("programmer")
 public class Programmer implements Emp {
 
 	@Override
+//	@Autowired
 	public String work() {
 		// TODO Auto-generated method stub
 		System.out.println("개발자가 일을 합니다");

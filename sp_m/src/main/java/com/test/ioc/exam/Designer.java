@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import org.springframework.beans.factory.support.MethodReplacer;
 import org.springframework.stereotype.Service;
 
-@Service("designer")
+//@Service("designer")
 public class Designer implements MethodReplacer{
 
 	@Override

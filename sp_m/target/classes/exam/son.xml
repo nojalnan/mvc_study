@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<bean id="target1" class="com.test.ioc.exam3.Exam">
+		<property name="val1">
+			<ref bean="father1" />
+		</property>
+	</bean>
+	<bean id="target2" class="com.test.ioc.exam3.Exam">
+		<property name="val2">
+			<ref parent="father2" />
+		</property>
+	</bean>
+	<bean id="target4" class="com.test.ioc.exam3.Exam">
+		<property name="val1">
+			<ref parent="str1" />
+		</property>
+		<property name="val2">
+			<ref bean="str1" />
+		</property>
+	</bean>
+	<bean id="str1" class="java.lang.String">
+		<constructor-arg>
+			<value>son str1</value>
+		</constructor-arg>
+	</bean>
+	<bean id="father2" class="java.lang.String">
+		<constructor-arg>
+			<value>son bean2</value>
+		</constructor-arg>
+	</bean>
+</beans>

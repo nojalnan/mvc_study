@@ -13,7 +13,7 @@ public class Working {
 		this.emp = emp;
 	}
 	
-	@Autowired
+//	@Autowired
 	public void setEmp(@Qualifier(value="designer")Emp emp) {
 		this.emp = emp;
 	}
