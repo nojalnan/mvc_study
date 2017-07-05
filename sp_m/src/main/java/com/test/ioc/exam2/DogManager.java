@@ -15,4 +15,5 @@ public class DogManager {
 		pudle.bark();
 		jindo.bark();
 	}
+	
 }
