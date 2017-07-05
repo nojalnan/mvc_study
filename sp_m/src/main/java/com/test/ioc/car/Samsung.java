@@ -1,5 +1,8 @@
 package com.test.ioc.car;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class Samsung implements Maker{
 
 		private Car car;

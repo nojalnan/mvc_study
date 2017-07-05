@@ -1,5 +1,8 @@
 package com.test.ioc.car;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Money {
 	private int amt;
 	public Money(){}

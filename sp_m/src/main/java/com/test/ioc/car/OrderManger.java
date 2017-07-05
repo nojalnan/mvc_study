@@ -1,29 +1,32 @@
 package com.test.ioc.car;
 
-public class OrderManger {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
+@Service("orderManager")
+public class OrderManger {
+	
+	@Autowired
+	@Qualifier("hyundai")
 	private Maker mk;
 	
+	@Autowired
+	@Qualifier("samsung")
 	private Maker mk2;
 	
-//	private Money money;
+	@Autowired
+	private Money money;
 	
-	public OrderManger(){
-
-	}
+//	public OrderManger(){
+//
+//	}
 	
 	
 	public void order(){
-		Money money = new Money();
 		money.setAmt(1000);
 		Car car = mk.sell(money);
 		Car car2 = mk2.sell(money);
 	}
 	
-	public void setMaker(Maker maker) {
-		this.mk = maker;
-	}
-	public void setMaker2(Maker maker2) {
-		this.mk2 = maker2;
-	}
 }
