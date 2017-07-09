@@ -1,0 +1,49 @@
+package bean;
+
+public class User {
+	private int userNum;
+	private String userName;
+	private String userId;
+	private String userPwd;
+	private int classNum;
+	private int age;
+	
+	public int getUserNum() {
+		return userNum;
+	}
+	public void setUserNum(int userNum) {
+		this.userNum = userNum;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public String getUserPwd() {
+		return userPwd;
+	}
+	public void setUserPwd(String userPwd) {
+		this.userPwd = userPwd;
+	}
+	public int getClassNum() {
+		return classNum;
+	}
+	public void setClassNum(int classNum) {
+		this.classNum = classNum;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
+	
+}
