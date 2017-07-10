@@ -9,6 +9,6 @@ header파일입니다.<br>
 <script src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 <script src="<c:url value="/resources/js/common.js" />"></script>
 
-<form id="urlForm" action="/spring4/" onsubmit="return urlSubmit(this)" method="POST">
+<form id="urlForm" action="/test/" onsubmit="return urlSubmit(this)" method="POST">
 <input type="text" id="urlStr" name="urlStr" style="display:none"/>
 </form>

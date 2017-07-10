@@ -20,9 +20,9 @@ var AjaxUtil = function(url, params, type, dataType) {
 		alert("url정보가 없습니다.");
 		return null;
 	}
-	this.url = "/spring4/" + url;
+	this.url = "/test/" + url;
 	var initData = {}
-	initData["projectName"] = "spring4";
+	initData["projectName"] = "test";
 
 	this.param = JSON.stringify(initData);
 	if (params) {

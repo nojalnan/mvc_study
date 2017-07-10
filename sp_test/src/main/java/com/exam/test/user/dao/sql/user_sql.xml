@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd"> 
+
+<mapper namespace="user">
+
+	<select id="USER_PWD_OBJECT" parameterType="Map" resultType="user">
+	  select 
+	    userid,
+	  	userpwd 
+	  from TEST2_tuser2 
+	  where userid = #{userid}
+	</select>	
+		
+	<select id="USER_LIST"  resultType="java.util.HashMap">
+	  select 
+	    userid,
+	  	userpwd 
+	  from TEST2_tuser2
+	</select>	
+	
+	<select id="USER_ROLE"  resultType="java.util.HashMap">
+	  select 
+	    USERROLE
+	  	, DESCRIPTION
+	  from TEST2_USER_ROLE
+	</select>		
+	
+	<delete id="USER_DEL"  parameterType="Map">
+	  delete 
+	  from TEST2_tuser2 
+	  where userid = #{userid}
+	</delete>	
+</mapper>
+
+
+
+
+
+
