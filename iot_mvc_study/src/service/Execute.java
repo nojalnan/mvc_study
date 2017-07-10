@@ -36,7 +36,13 @@ public class Execute {
 				e.printStackTrace();
 			}
 		}else if(command==3){
-			
+			User user = new User();
+			UserService us = new UserService();
+			try {
+				us.deleteUser(user);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}else{
 			System.out.println("서비스번호를 잘못 입력하셨습니다.");
 		}

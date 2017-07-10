@@ -20,7 +20,7 @@ public class UserService {
 	UserService(){
 		try{
 			con = DBConn.getCon();
-			System.out.println(con);
+//			System.out.println(con);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -44,7 +44,7 @@ public class UserService {
 		return userInfoList;
 	}
 	
-	public User inputUserInfo(User user){
+	public User inputSignup(User user){
 		System.out.println("아이디를 입력해주세요 .");
 		String id = scan.nextLine();
 		user.setUserId(id);
@@ -69,7 +69,7 @@ public class UserService {
 		String sql = "insert into user_info(user_id, user_pwd, user_name, class_num, age)";
 		sql += " values(?,?,?,?,?)";
 		ps = con.prepareStatement(sql);
-		us.inputUserInfo(user);
+		us.inputSignup(user);
 		ps.setString(1,user.getUserId());
 		ps.setString(2,user.getUserPwd());
 		ps.setString(3,user.getUserName());
@@ -77,11 +77,19 @@ public class UserService {
 		ps.setInt(5, user.getAge());
 		
 		int result = ps.executeUpdate();
-		System.out.println(result + "갯수 만큼 추가 되었습니다.");
+		System.out.println(result + "개의 행이 추가 되었습니다.");
 	}
 	
-	public void deleteUser(){
+	public void deleteUser(User user) throws SQLException{
+		String sql = "delete from user_info where user_num=?;";
+		ps = con.prepareStatement(sql);
+		System.out.println("삭제할 유저의 번호를 입력해주세요.");
+		int userNum = Integer.parseInt(scan.nextLine());
+		user.setUserNum(userNum);		
+		ps.setInt(1,user.getUserNum());
 		
+		int result = ps.executeUpdate();
+		System.out.println(result + "개의 행이 삭제 되었습니다.");
 	}
 	
 }
