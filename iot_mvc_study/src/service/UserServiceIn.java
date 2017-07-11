@@ -1,12 +1,14 @@
 package service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import bean.User;
 
 public interface UserServiceIn {
-	public void selectUser() throws SQLException;
+	public ArrayList<HashMap> selectUser() throws SQLException;
 	public void insertUser(User user) throws SQLException;
 	public void deleteUser() throws SQLException;
-	public User insertUserInfo(User user);
+	public void insertUserInfo(User user);
 }

@@ -17,7 +17,7 @@ public class Execute {
 		int command = Integer.parseInt(scan.nextLine());
 		if(command==1){
 			try {
-				UserService us = new UserService();
+				UserServiceIn us = new UserServiceImpl();
 				ArrayList<HashMap> userInfoList = us.selectUser();
 				for (HashMap hm : userInfoList) {
 					System.out.println(hm);
@@ -29,7 +29,7 @@ public class Execute {
 			
 		}else if(command==2){
 			User user = new User();
-			UserService us = new UserService();
+			UserServiceIn us = new UserServiceImpl();
 			try {
 				us.insertUser(user);
 			} catch (Exception e) {
