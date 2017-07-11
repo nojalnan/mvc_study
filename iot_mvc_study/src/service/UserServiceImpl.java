@@ -33,19 +33,39 @@ public class UserServiceImpl implements UserServiceIn {
 //		getColumnCount
 	}
 	
-	public void insertUserInfo(User user){
-		
-	}
-
 	@Override
-	public void insertUser() {
+	public void insertUser(User user) throws SQLException {
 		String sql = "insert into user_info(user_id, user_name, user_pwd, class_num, age)";
 		sql += "values(?,?,?,?,?)";
+		ps = con.prepareStatement(sql);
+		ps.setString(1, user.getUserId());
+		ps.setString(2, user.getUserPwd());
+		ps.setString(3, user.getUserName());
+		ps.setInt(4, user.getClassNum());
+		ps.setInt(5, user.getAge());
+		int result = ps.executeUpdate();
+		System.out.println(result + "개의 행이 추가되었습니다.");
 	}
 
 	@Override
 	public void deleteUser() {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public User insertUserInfo(User user) {
+		System.out.println("아이디를 입력해주세요.");
+		user.setUserId(scan.nextLine());
+		System.out.println("비밀번호를 입력해주세요.");
+		user.setUserPwd(scan.nextLine());
+		System.out.println("이름를 입력해주세요.");
+		user.setUserName(scan.nextLine());
+		System.out.println("클래스를 입력해주세요.");
+		user.setClassNum(Integer.parseInt(scan.nextLine()));
+		System.out.println("나이를 입력해주세요.");
+		user.setAge(Integer.parseInt(scan.nextLine()));
+		return user;
 		
 	}
 	
