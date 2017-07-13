@@ -3,7 +3,10 @@ package service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 import bean.User;
@@ -24,20 +27,34 @@ public class UserServiceImpl implements UserServiceIn {
 	}
 
 	@Override
-	public void selectUser() throws SQLException {
+	public  ArrayList<HashMap> selectUser() throws SQLException {
+//		getMetaData
+//		getColumnCount
+//		getColumnLabel
 		String sql = "select user_num, user_id, user_name, user_pwd, class_num, age from user_info";
 		ps = con.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
-		rs.next();
-//		getMetaData
-//		getColumnCount
+		ResultSetMetaData rsmd = rs.getMetaData();
+		int colCnt = rsmd.getColumnCount();		
+		ArrayList<HashMap> userInfoList = new ArrayList<HashMap>();
+		while(rs.next()){
+			HashMap hm = new HashMap();
+			for(int i=1;i<=colCnt;i++){
+				String name = rsmd.getColumnLabel(i);
+				hm.put(name, rs.getString(name));
+			}
+			userInfoList.add(hm);
+		}
+		return userInfoList;
 	}
 	
 	@Override
 	public void insertUser(User user) throws SQLException {
+		UserServiceIn us = new UserServiceImpl();
 		String sql = "insert into user_info(user_id, user_name, user_pwd, class_num, age)";
 		sql += "values(?,?,?,?,?)";
 		ps = con.prepareStatement(sql);
+		us.insertUserInfo(user);
 		ps.setString(1, user.getUserId());
 		ps.setString(2, user.getUserPwd());
 		ps.setString(3, user.getUserName());
@@ -54,7 +71,7 @@ public class UserServiceImpl implements UserServiceIn {
 	}
 
 	@Override
-	public User insertUserInfo(User user) {
+	public void insertUserInfo(User user) {
 		System.out.println("아이디를 입력해주세요.");
 		user.setUserId(scan.nextLine());
 		System.out.println("비밀번호를 입력해주세요.");
@@ -65,7 +82,6 @@ public class UserServiceImpl implements UserServiceIn {
 		user.setClassNum(Integer.parseInt(scan.nextLine()));
 		System.out.println("나이를 입력해주세요.");
 		user.setAge(Integer.parseInt(scan.nextLine()));
-		return user;
 		
 	}
 	
