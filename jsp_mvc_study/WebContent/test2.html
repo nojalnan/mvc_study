@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+function createBox(){
+	var cnt = document.getElementById("num1").value;
+	for(var i=1;i<=cnt;i++){
+		document.getElementById("resultDiv").innerHTML="<input type = 'text'>";
+	}
+}
+
+</script>
+<form action="test">
+생성개수 : <input type = "text" name = "num1" id = "num1">
+<input type = "button" value="생성" onclick="createBox()">
+<div id="resultDiv"></div>
+<br>
+찾을 값 : <input type = "text" name = "num2" id = "num2">
+<input type = "button" value="값찾기" onclick="searchRes()">
+</form>
+
+</body>
+</html>
