@@ -7,9 +7,20 @@
 <body>
 <script>
 function createBox(){
+	var result = "";
 	var cnt = document.getElementById("num1").value;
+	alert(cnt);
 	for(var i=1;i<=cnt;i++){
-		document.getElementById("resultDiv").innerHTML="<input type = 'text'>";
+		result += "<input type = 'text' name = 'num" + i + "'" + "id = 'num" + i + "'>";
+	}
+	 document.getElementById("resultDiv").innerHTML=result;
+}
+
+function searchRes(){
+	var cre = createBox();
+	var res = document.getElementById("num2");
+	for(var i=1;i<=cnt;i++){
+		alert(cnt);
 	}
 }
 
