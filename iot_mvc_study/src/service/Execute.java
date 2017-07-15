@@ -61,15 +61,13 @@ public class Execute {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (user.getCommand() == 3) {
+		} else {
 			UserService us = new UserServiceImpl();
 			try {
 				us.deleteUser(user);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else {
-			System.out.println("서비스번호를 잘못 입력하셨습니다.");
 		}
 	}
 }
