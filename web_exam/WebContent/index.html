@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>하이요</title>
+</head>
+<script>
+function f_click1(){
+	var idValue = document.getElementById("id").value;
+	var num = parseInt(idValue);
+	num++;
+	document.getElementById("id").value = num;
+}
+function f_click2(){
+	var idValue = document.getElementById("id").value;
+	var num =parseInt(idValue);
+	num--;
+	document.getElementById("id").value = num;
+}
+</script>
+<body>
+아이디 : <input type="text" name="id" id="id" value="0"/><br>
+<input type="button" value="로그인" onclick="f_click1()">
+<input type="button" value="취소" onclick="f_click2()">
+</body>
+
+</html>
