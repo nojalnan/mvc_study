@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+function setValue(obj){
+	//var num1 = document.getElementById("num1").value;
+	//var numch = new Number(num1);
+	//alert(isNaN(numch));
+	var fObj = obj.form;
+	var eles = fObj.elements;
+	
+	for(var i=0;i<eles.length;i++){
+		if(eles[i].type=="button"){
+			continue;
+		}
+		if(i%2==1){
+			eles[i].value = "나는 문자당";
+		}else{
+			eles[i].value = 1;
+		}
+	}
+	
+	//obj.form.elements[3].value=5;
+}
+
+function checkValue(obj){
+	var fObj = obj.form;
+	var eles = fObj.elements;
+
+	for(var i=0;i<eles.length;i++){
+
+		if(eles[i].type=="button"){
+			continue;
+		}
+		if(i%2==1){
+			var num = eles[i].value;
+			var numch = new Number(num)
+			if(isNaN(numch)){
+				alert("숫자를 입력해주세요.");
+				eles[i].value="";
+				eles[i].focus();
+				return false;
+			}
+		}
+	}	
+}
+</script>
+<form action="test">
+<input type = "text" name = "num1" id = "num1">
+<input type = "text" name = "num2" id = "num2">
+<input type = "text" name = "num3" id = "num3">
+<input type = "text" name = "num4" id = "num4">
+<input type = "text" name = "num5" id = "num5">
+<input type = "text" name = "num6" id = "num6">
+<input type = "button" value="클릭" onclick="setValue(this)">
+<input type = "button" value="체크" onclick="checkValue(this)">
+</form>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+function createBox(){
+	var result = "";
+	var cnt = document.getElementById("num1").value;
+	alert(cnt);
+	for(var i=1;i<=cnt;i++){
+		result += "<input type = 'text' name = 'num" + i + "'" + "id = 'num" + i + "'>";
+	}
+	 document.getElementById("resultDiv").innerHTML=result;
+}
+
+function searchRes(){
+	var cre = createBox();
+	var res = document.getElementById("num2");
+	for(var i=1;i<=cnt;i++){
+		alert(cnt);
+	}
+}
+
+</script>
+<form action="test">
+생성개수 : <input type = "text" name = "num1" id = "num1">
+<input type = "button" value="생성" onclick="createBox()">
+<div id="resultDiv"></div>
+<br>
+찾을 값 : <input type = "text" name = "num2" id = "num2">
+<input type = "button" value="값찾기" onclick="searchRes()">
+</form>
+
+</body>
+</html>
