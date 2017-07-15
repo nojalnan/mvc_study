@@ -6,32 +6,32 @@
 </head>
 <body>
 <script>
-function createBox(){
+function createBox(obj){
 	var result = "";
-	var cnt = document.getElementById("num1").value;
-	alert(cnt);
+	var cnt = document.getElementById("cbox").value;
+	var fObj = obj.form;
+	var eles = fObj.elements;
+	alert(eles.length);
 	for(var i=1;i<=cnt;i++){
-		result += "<input type = 'text' name = 'num" + i + "'" + "id = 'num" + i + "'>";
+		result += "<input type = 'text' name = 'box" + i + "'" + "id = 'box" + i + "'>";
 	}
 	 document.getElementById("resultDiv").innerHTML=result;
 }
 
-function searchRes(){
-	var cre = createBox();
-	var res = document.getElementById("num2");
-	for(var i=1;i<=cnt;i++){
-		alert(cnt);
-	}
+function searchRes(obj){
+	var fObj = obj.form;
+	var eles = fObj.elements;
+	alert(eles.length);
 }
 
 </script>
 <form action="test">
-생성개수 : <input type = "text" name = "num1" id = "num1">
-<input type = "button" value="생성" onclick="createBox()">
+생성개수 : <input type = "text" name = "cbox" id = "cbox">
+<input type = "button" value="생성" onclick="createBox(this)">
 <div id="resultDiv"></div>
 <br>
-찾을 값 : <input type = "text" name = "num2" id = "num2">
-<input type = "button" value="값찾기" onclick="searchRes()">
+찾을 값 : <input type = "text" name = "sbox" id = "sbox">
+<input type = "button" value="값찾기" onclick="searchRes(this)">
 </form>
 
 </body>
