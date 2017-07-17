@@ -51,11 +51,11 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void insertUser(User user) throws SQLException {
-		String sql = "insert into user_info(user_id, user_name, user_pwd, class_num, age)";
+		String sql = "insert into user_info(user_id, user_pwd, user_name, class_num, age)";
 		UserServiceImpl us = new UserServiceImpl();
 		sql += "values(?,?,?,?,?)";
 		us.connDb(sql);
-		us.insertUserInfo(user);
+		us.inputUserInfo(user);
 		us.ps.setString(1, user.getUserId());
 		us.ps.setString(2, user.getUserPwd());
 		us.ps.setString(3, user.getUserName());
@@ -67,17 +67,18 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void deleteUser(User user) throws SQLException {
-		String sql = "delete from user_info where user_num=?";
+		String sql = "delete from user_info where user_num in (select * from (select user_num from user_info as ui where ui.user_id = ? and ui.user_pwd = ?) as result)";
 		UserServiceImpl us = new UserServiceImpl();
 		us.connDb(sql);
-		us.insertUserInfo(user);
-		us.ps.setInt(1, user.getUserNum());
+		us.inputUserInfo(user);
+		us.ps.setString(1, user.getUserId());
+		us.ps.setString(2, user.getUserPwd());
 		int result = us.ps.executeUpdate();
 		System.out.println(result + "개의 행이 삭제되었습니다.");
 	}
 
 	@Override
-	public void insertUserInfo(User user) {
+	public void inputUserInfo(User user) {
 		if (user.getCommand() == 2) {
 			System.out.println("아이디를 입력해주세요.");
 			user.setUserId(scan.nextLine());
@@ -90,8 +91,10 @@ public class UserServiceImpl implements UserService {
 			System.out.println("나이를 입력해주세요.");
 			user.setAge(Integer.parseInt(scan.nextLine()));
 		} else if (user.getCommand() == 3) {
-			System.out.println("삭제하려는 유저의 번호를 입력해주세요.");
-			user.setUserNum(Integer.parseInt(scan.nextLine()));
+			System.out.println("삭제하려는 유저의 아이디를 입력해주세요.");
+			user.setUserId(scan.nextLine());
+			System.out.println("삭제하려는 유저의 비밀번호를 입력해주세요.");
+			user.setUserPwd(scan.nextLine());
 		} else {
 			System.out.println("서비스번호를 잘못 입력하셨습니다.");
 		}

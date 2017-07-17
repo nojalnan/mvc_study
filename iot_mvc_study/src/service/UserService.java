@@ -13,5 +13,6 @@ public interface UserService {
 
 	public void deleteUser(User user) throws SQLException;
 
-	public void insertUserInfo(User user);
+	public void inputUserInfo(User user);
+	
 }
