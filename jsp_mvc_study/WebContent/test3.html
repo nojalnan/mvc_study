@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>모든 값 더하기</title>
+</head>
+<script>
+function doPlus(obj){
+	var result = document.getElementsByName("test");
+	var str ="";
+	for(var i=0;i<result.length;i++){
+		str += result[i].value;			
+	}alert(str);	
+}
+</script>
+<body>
+<form action="test">
+<input type = "text" name = "test" id = "val1">
+<input type = "text" name = "test" id = "val2">
+<input type = "text" name = "test" id = "val3">
+<input type = "button" value="더하기" onclick="doPlus(this)">
+</form>
+
+</body>
+</html>

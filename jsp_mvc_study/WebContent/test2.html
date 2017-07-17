@@ -21,7 +21,18 @@ function createBox(obj){
 function searchRes(obj){
 	var fObj = obj.form;
 	var eles = fObj.elements;
-	alert(eles.length);
+	var searchStr = document.getElementById("sbox").value;
+	
+	for(var i=0;i<eles.length;i++){
+		if(eles[i].type=="button"){
+			continue;
+		}
+		if(i%2==1){
+			var str = eles[i].value;
+			str.indexOf("");
+			eles[i].focus();
+		}
+	}
 }
 
 </script>
