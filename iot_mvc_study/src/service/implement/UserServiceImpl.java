@@ -91,7 +91,7 @@ public class UserServiceImpl implements UserService {
 			System.out.println("자바중급");
 			System.out.println("자바고급");
 			UserService us = new UserServiceImpl();
-			us.getClassNum(user);
+			us.getClassNumber(user);
 			System.out.println("나이를 입력해주세요.");
 			user.setAge(Integer.parseInt(scan.nextLine()));
 		} else if (user.getCommand() == 3) {
@@ -106,7 +106,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int getClassNum(User user) {
+	public int getClassNumber(User user) {
 		try {
 			String className = scan.nextLine();
 			switch (className) {
@@ -129,7 +129,7 @@ public class UserServiceImpl implements UserService {
 			return user.getClassNum();
 		} catch (Exception e) {
 			System.out.println("소속된 클래스를 정확하게 입력해주세요.");
-			return getClassNum(user);
+			return getClassNumber(user);
 		}
 
 	}
