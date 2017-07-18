@@ -86,8 +86,12 @@ public class UserServiceImpl implements UserService {
 			user.setUserPwd(scan.nextLine());
 			System.out.println("이름를 입력해주세요.");
 			user.setUserName(scan.nextLine());
-			System.out.println("클래스를 입력해주세요.");
-			user.setClassNum(Integer.parseInt(scan.nextLine()));
+			System.out.println("소속된 클래스를 입력해주세요.");
+			System.out.println("자바초급");
+			System.out.println("자바중급");
+			System.out.println("자바고급");
+			UserService us = new UserServiceImpl();
+			us.getClassNum(user);
 			System.out.println("나이를 입력해주세요.");
 			user.setAge(Integer.parseInt(scan.nextLine()));
 		} else if (user.getCommand() == 3) {
@@ -97,6 +101,35 @@ public class UserServiceImpl implements UserService {
 			user.setUserPwd(scan.nextLine());
 		} else {
 			System.out.println("서비스번호를 잘못 입력하셨습니다.");
+		}
+
+	}
+
+	@Override
+	public int getClassNum(User user) {
+		try {
+			String className = scan.nextLine();
+			switch (className) {
+			case "자바초급":
+				user.setClassNum(1);
+				break;
+
+			case "자바중급":
+				user.setClassNum(2);
+				break;
+
+			case "자바고급":
+				user.setClassNum(3);
+				break;
+
+			default:
+				Exception e = new Exception();
+				throw e;
+			}
+			return user.getClassNum();
+		} catch (Exception e) {
+			System.out.println("소속된 클래스를 정확하게 입력해주세요.");
+			return getClassNum(user);
 		}
 
 	}

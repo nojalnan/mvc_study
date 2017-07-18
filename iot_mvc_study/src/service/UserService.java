@@ -15,4 +15,6 @@ public interface UserService {
 
 	public void inputUserInfo(User user);
 	
+	public int getClassNum(User user);
+	
 }
