@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void deleteUser(User user) throws SQLException {
+	public int deleteUser(User user) throws SQLException {
 		String sql = "delete from user_info where user_num in (select * from (select user_num from user_info as ui where ui.user_id = ? and ui.user_pwd = ?) as result)";
 		UserServiceImpl us = new UserServiceImpl();
 		us.connDb(sql);
@@ -74,7 +74,14 @@ public class UserServiceImpl implements UserService {
 		us.ps.setString(1, user.getUserId());
 		us.ps.setString(2, user.getUserPwd());
 		int result = us.ps.executeUpdate();
-		System.out.println(result + "개의 행이 삭제되었습니다.");
+		if(result==1){
+			System.out.println(result + "개의 행이 삭제되었습니다.");
+			return  result;
+		}else{
+			System.out.println("유저 정보를 정확하게 입력해주세요.");
+			return deleteUser(user);
+		}
+		
 	}
 
 	@Override

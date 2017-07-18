@@ -11,7 +11,7 @@ public interface UserService {
 
 	public void insertUser(User user) throws SQLException;
 
-	public void deleteUser(User user) throws SQLException;
+	public int deleteUser(User user) throws SQLException;
 
 	public void inputUserInfo(User user);
 	
