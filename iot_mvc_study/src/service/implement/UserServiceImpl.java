@@ -86,10 +86,6 @@ public class UserServiceImpl implements UserService {
 			user.setUserPwd(scan.nextLine());
 			System.out.println("이름를 입력해주세요.");
 			user.setUserName(scan.nextLine());
-			System.out.println("소속된 클래스를 입력해주세요.");
-			System.out.println("자바초급");
-			System.out.println("자바중급");
-			System.out.println("자바고급");
 			UserService us = new UserServiceImpl();
 			us.getClassNumber(user);
 			System.out.println("나이를 입력해주세요.");
@@ -107,6 +103,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int getClassNumber(User user) {
+		System.out.println("소속된 클래스를 입력해주세요.");
+		System.out.println("자바초급");
+		System.out.println("자바중급");
+		System.out.println("자바고급");
 		try {
 			String className = scan.nextLine();
 			switch (className) {
