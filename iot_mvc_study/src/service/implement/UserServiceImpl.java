@@ -52,8 +52,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void insertUser(User user) throws SQLException {
 		String sql = "insert into user_info(user_id, user_pwd, user_name, class_num, age)";
-		UserServiceImpl us = new UserServiceImpl();
 		sql += "values(?,?,?,?,?)";
+		UserServiceImpl us = new UserServiceImpl();
 		us.connDb(sql);
 		us.inputUserInfo(user);
 		us.ps.setString(1, user.getUserId());

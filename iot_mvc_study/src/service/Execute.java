@@ -21,8 +21,8 @@ public class Execute {
 			} else if (serviceNum == 3) {
 				return serviceNum;
 			} else {
-				System.out.println("해당하는 서비스항목의 번호를 입력해주세요.");
-				return getServiceNum();
+				Exception e = new Exception();
+				throw e;
 			}
 
 		} catch (Exception e) {
