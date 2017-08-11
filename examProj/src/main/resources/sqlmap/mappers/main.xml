@@ -6,8 +6,8 @@
 		SELECT COUNT(*) FROM BOARD_INFO
 	</select>
 
-	<select id="getResult" resultType="int">
-		SELECT SUBJECT FROM BOARD_INFO WHERE BOARD_NUM = '1'
+	<select id="getResult" resultType="String">
+		SELECT TITLE FROM BOARD_INFO  WHERE BOARD_NUM = '1'
 	</select>
 	
 	<select id="getListResult" parameterType="int" resultType="mainVO">
