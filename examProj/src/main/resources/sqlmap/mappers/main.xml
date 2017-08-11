@@ -2,14 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.exam.proj.main.service.impl.MainMapper">
 
-	<select id="getBoard" resultType="mainVo" parameterType="_long">
-		select
-		binum, bititle, bicontent, bipwd, creusr, credat from board_info
-		where
-		binum = #{binum}
+	<select id="getTotalCount" resultType="int">
+		SELECT COUNT(*) FROM BOARD_INFO
 	</select>
 
-	<select id="getListResult" resultType="mainVo">
-		SELECT * FROM board_info
+	<select id="getResult" resultType="int">
+		SELECT SUBJECT FROM BOARD_INFO WHERE BOARD_NUM = '1'
 	</select>
+	
+	<select id="getListResult" parameterType="int" resultType="mainVO">
+		SELECT
+			*
+		FROM (
+			SELECT
+				ROWNUM RN,
+				BOARD_NUM,
+				TITLE,
+				CONTENT,
+				WRITER,
+				REG_DATE
+			FROM BOARD_INFO
+ 		)
+ 		WHERE RN BETWEEN (#{page}-1)*10+1 AND #{page}*10
+	</select>
+	
 </mapper>

@@ -10,6 +10,12 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
+	<context:component-scan base-package="com.exam.proj">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		<context:exclude-filter type="annotation" expression="com.exam.proj.util.annotation.Mapper" />
+    </context:component-scan>
 	<annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
@@ -22,7 +28,6 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.exam.proj" />
-	
 	
 	
 </beans:beans>
