@@ -12,7 +12,6 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<context:component-scan base-package="com.exam.proj">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Component"/>
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
 		<context:exclude-filter type="annotation" expression="com.exam.proj.util.annotation.Mapper" />
     </context:component-scan>

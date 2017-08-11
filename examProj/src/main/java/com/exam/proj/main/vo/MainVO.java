@@ -1,8 +1,5 @@
 package com.exam.proj.main.vo;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class MainVO {
 	
 	private int rn;

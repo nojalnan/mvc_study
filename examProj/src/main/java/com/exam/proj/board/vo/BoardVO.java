@@ -1,8 +1,5 @@
 package com.exam.proj.board.vo;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class BoardVO {
 	
 	private int rn;

@@ -7,13 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.exam.proj.main.service.MainService;
+import com.exam.proj.board.service.BoardService;
 
 @Controller
 public class BoardController {
 
 	@Resource(name = "boardService")
-	private MainService boardService;
+	private BoardService boardService;
 	
 	@RequestMapping(value = "/board/board.do")
 	public String main(@RequestParam(value="page",required=false,defaultValue="1") int page, Model model) {
