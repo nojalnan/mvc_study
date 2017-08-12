@@ -26,7 +26,7 @@
 				<tbody>
 					<c:forEach items="${list}" var="item" varStatus="status">
 						<tr align="center">
-							<td width=50 style="word-break:break-all"><a href="/main/view.do?binum=${item.binum}">
+							<td class="view" width=50 style="word-break:break-all"><a href="/main/view.do?binum=${item.binum}">
 									${item.rn} </a></td>
 							<td>${item.title}</td>
 							<td width=200 style="word-break:break-all">${item.writer}</td>
