@@ -11,5 +11,13 @@ public interface MainService {
 	String getResult();
 	
 	List<MainVO> getListResult(int page);
+	
+	MainVO getBoardView(int board_num);
+	
+	int insertBoardItem(MainVO mainVO);
+	
+	int updateBoardItem(MainVO mainVO);
+	
+	int deleteBoardItem(MainVO mainVO);
 
 }

@@ -6,21 +6,22 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Home</title>
+	<script type="text/javascript" src="/resources/js/jquery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-<a href="/board/board.do" >게시판</a>
 <table>
-
+<br/>
 글갯수 : ${totalCount}
 <c:forEach items="${list}" var="item" varStatus="status">
 <tr>
 	<td>
-		 <a href="/main/view.do?seq=${item.board_num}">
+		 <a href="/main/view.do?board_num=${item.board_num}">
 			${item.rn}
 		</a>
 	</td>
 	<td>${item.title}</td>
-	<td><c:if test="${item.board_num == '1'}">new</c:if></td>
+	<td>${item.writer}</td>
+	<td>${item.reg_date}</td>
 </tr>
 </c:forEach>
 </table>

@@ -19,7 +19,7 @@ public class MainVO {
 		return board_num;
 	}
 	public void setBoard_num(int board_num) {
-		board_num = board_num;
+		this.board_num = board_num;
 	}
 	public String getTitle() {
 		return title;

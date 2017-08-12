@@ -27,8 +27,27 @@ public class MainServiceImpl implements MainService {
 
 	@Override
 	public List<MainVO> getListResult(int page) {
-		System.out.println("page : " + page);
 		return mainMapper.getListResult(page);
+	}
+
+	@Override
+	public MainVO getBoardView(int board_num) {
+		return mainMapper.getBoardView(board_num);
+	}
+
+	@Override
+	public int insertBoardItem(MainVO mainVO) {
+		return mainMapper.insertBoardItem(mainVO);
+	}
+
+	@Override
+	public int updateBoardItem(MainVO mainVO) {
+		return mainMapper.updateBoardItem(mainVO);
+	}
+
+	@Override
+	public int deleteBoardItem(MainVO mainVO) {
+		return mainMapper.deleteBoardItem(mainVO);
 	}
 
 }
