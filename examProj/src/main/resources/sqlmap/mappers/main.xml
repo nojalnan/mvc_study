@@ -7,7 +7,7 @@
 	</select>
 
 	<select id="getResult" resultType="String">
-		SELECT TITLE FROM BOARD_INFO  WHERE BOARD_NUM = '1'
+		SELECT TITLE FROM BOARD_INFO  WHERE BINUM = '1'
 	</select>
 	
 	<select id="getListResult" parameterType="int" resultType="mainVO">
@@ -16,10 +16,10 @@
 		FROM (
 			SELECT
 				ROWNUM RN,
-				BOARD_NUM,
+				BINUM,
 				TITLE,
 				WRITER,
-				REG_DATE
+				CDATE
 			FROM BOARD_INFO
  		)
  		WHERE RN BETWEEN (#{page}*10)-9 AND #{page}*10
@@ -27,24 +27,24 @@
 	
 	<select id="getBoardView" parameterType="int" resultType="mainVO">
 		SELECT
-			BOARD_NUM,
+			BINUM,
 			TITLE,
 			CONTENT,
 			WRITER,
-			REG_DATE
+			CDATE
 		FROM BOARD_INFO
-		WHERE BOARD_NUM = #{board_num}
+		WHERE BINUM = #{binum}
 	</select>
 
 	<update id="updateBoardItem" parameterType="mainVO">
 		UPDATE BOARD_INFO
 		SET TITLE = #{title},
 			CONTENT = #{content}
-		WHERE BOARD_NUM = #{board_num}
+		WHERE BINUM = #{binum}
 	</update>
 
 	<delete id="deleteBoardItem" parameterType="mainVO">
-		DELETE BOARD_INFO WHERE BOARD_NUM = #{board_num}
+		DELETE BOARD_INFO WHERE BINUM = #{binum}
 	</delete>
 	
 </mapper>

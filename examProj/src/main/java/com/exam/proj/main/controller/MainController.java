@@ -32,7 +32,7 @@ public class MainController {
 		int totalCount = mainService.getTotalCount();
 
 		int firstPage = 1, begin, end;
-		int lastPage = totalCount / (10 + 1) + 1;
+		int lastPage = ((totalCount - 1)/ 10) + 1;
 		int prevPage = (int) ((page - 1) / 10) * 10;
 		if (prevPage < 1)
 			prevPage = 1;
@@ -59,21 +59,21 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/main/view.do")
-	public String view(@RequestParam(value = "board_num") int board_num, Model model) {
-		model.addAttribute("item", mainService.getBoardView(board_num));
+	public String view(@RequestParam(value = "binum") int binum, Model model) {
+		model.addAttribute("item", mainService.getBoardView(binum));
 		return "/main/view";
 	}
 
 	@RequestMapping(value = "/main/modify.do")
-	public String modify(@RequestParam(value = "board_num") int board_num, Model model) {
-		model.addAttribute("item", mainService.getBoardView(board_num));
+	public String modify(@RequestParam(value = "binum") int binum, Model model) {
+		model.addAttribute("item", mainService.getBoardView(binum));
 		return "/main/modify";
 	}
 
 	@RequestMapping(value = "/main/update.do")
 	public String update(MainVO mainVO, Model model) {
 		int result = mainService.updateBoardItem(mainVO);
-		return "redirect:/main/view.do?board_num=" + mainVO.getBoard_num();
+		return "redirect:/main/view.do?binum=" + mainVO.getBinum();
 	}
 
 	@RequestMapping(value = "/main/delete.do")

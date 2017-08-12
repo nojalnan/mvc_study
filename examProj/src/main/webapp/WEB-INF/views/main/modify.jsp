@@ -11,7 +11,7 @@
 </head>
 <body>
 <form name="frm" action="/main/update.do" method="post">
-<input type="hidden" name="board_num" value="${item.board_num}" />
+<input type="hidden" name="binum" value="${item.binum}" />
 <table>
 <tr>
 	<th>제목</th>
@@ -28,7 +28,7 @@
 </table>
 </form>
 
-<a href="/main/view.do?board_num=${item.board_num}">상세보기</a>
+<a href="/main/view.do?binum=${item.binum}">상세보기</a>
 <a href="/main/main.do">목록</a>
 </body>
 </html>

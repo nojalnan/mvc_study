@@ -14,7 +14,7 @@ public interface MainMapper {
 	
 	List<MainVO> getListResult(int page);
 	
-	MainVO getBoardView(int board_num);
+	MainVO getBoardView(int binum);
 	
 	int insertBoardItem(MainVO mainVO);
 	

@@ -3,11 +3,11 @@ package com.exam.proj.main.vo;
 public class MainVO {
 	
 	private int rn;
-	private int board_num;
+	private int binum;
 	private String title;
 	private String content;
 	private String writer;
-	private String reg_date;
+	private String cdate;
 	
 	public int getRn() {
 		return rn;
@@ -15,11 +15,11 @@ public class MainVO {
 	public void setRn(int rn) {
 		this.rn = rn;
 	}
-	public int getBoard_num() {
-		return board_num;
+	public int getBinum() {
+		return binum;
 	}
-	public void setBoard_num(int board_num) {
-		this.board_num = board_num;
+	public void setBinum(int binum) {
+		this.binum = binum;
 	}
 	public String getTitle() {
 		return title;
@@ -39,18 +39,18 @@ public class MainVO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public String getReg_date() {
-		return reg_date;
+	public String getCdate() {
+		return cdate;
 	}
-	public void setReg_date(String reg_date) {
-		this.reg_date = reg_date;
+	public void setCdate(String cdate) {
+		this.cdate = cdate;
 	}
 	
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "MainVO [rn=" + rn + ", board_num=" + board_num + ", title=" + title
-				+ ", content=" + content + ", writer=" + writer + ", reg_date=" + reg_date + "]";
+		return "MainVO [rn=" + rn + ", binum=" + binum + ", title=" + title
+				+ ", content=" + content + ", writer=" + writer + ", cdate=" + cdate + "]";
 	}
 
 }

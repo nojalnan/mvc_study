@@ -31,8 +31,8 @@ public class MainServiceImpl implements MainService {
 	}
 
 	@Override
-	public MainVO getBoardView(int board_num) {
-		return mainMapper.getBoardView(board_num);
+	public MainVO getBoardView(int binum) {
+		return mainMapper.getBoardView(binum);
 	}
 
 	@Override

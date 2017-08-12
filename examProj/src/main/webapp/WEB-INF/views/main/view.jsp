@@ -19,7 +19,7 @@
 			<tbody>
 				<tr>
 					<th>번호</th>
-					<td>${item.board_num}</td>
+					<td>${item.binum}</td>
 				</tr>
 				<tr>
 					<th>제목</th>
@@ -35,15 +35,15 @@
 				</tr>
 				<tr>
 					<th>작성시간</th>
-					<td>${item.reg_date}</td>
+					<td>${item.cdate}</td>
 				</tr>
 			</tbody>
 		</table>
-		<a href="/main/modify.do?board_num=${item.board_num}">수정</a> 
+		<a href="/main/modify.do?binum=${item.binum}">수정</a> 
 		<a href="javascript:deleteCheck();">삭제</a>
 		<a href="/main/main.do">목록</a>
 	</div>
 
-	<input type="hidden" id="board_num" value="${item.board_num}" />
+	<input type="hidden" id="binum" value="${item.binum}" />
 </body>
 </html>
