@@ -3,6 +3,5 @@
 <configuration>
     <typeAliases>
 		<typeAlias alias="mainVO" type="com.exam.proj.main.vo.MainVO"/>
-		<typeAlias alias="boardVO" type="com.exam.proj.board.vo.BoardVO"/>
     </typeAliases>
 </configuration>
