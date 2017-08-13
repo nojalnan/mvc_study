@@ -47,7 +47,7 @@ a {
 							htmlString += "</tr>";
 						}
 						$("#boardTable tbody").html(htmlString);
-						$("#totalCount").html("글 갯수 : " + result.totalCount);
+						$("#totalCount").html("전체 게시글 : " + result.totalCount + "개");
 						createPageing(result.totalCount, page);
 						setEvent();
 					},
