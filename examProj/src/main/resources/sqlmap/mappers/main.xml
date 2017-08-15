@@ -63,7 +63,7 @@
         	#{content},
         	#{writer},
         	SYSDATE
-    	);
+    	)
 	</insert>
 	
 </mapper>

@@ -77,9 +77,14 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/main/write.do")
+	public String write(MainVO mainVO, Model model) {
+		return "/main/write";
+	}
+	
+	@RequestMapping(value = "/main/insert.do")
 	public String insert(MainVO mainVO, Model model) {
 		int result = mainService.insertBoardItem(mainVO);
-		return "/main/write";
+		return "redirect:/main/main.do";
 	}
 
 	@RequestMapping(value = "/main/delete.do")

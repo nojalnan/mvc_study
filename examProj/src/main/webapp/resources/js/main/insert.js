@@ -1,4 +1,4 @@
-function updateCheck() {
+function insertCheck() {
 	// /main/delete.do?no=${item.no}
 
 	if( $("#title").val() == "" ) {
@@ -10,6 +10,12 @@ function updateCheck() {
 	if( $("#content").val() == "" ) {
 		alert("내용을 입력해주세요");
 		$("#content").focus();
+		return;
+	}
+	
+	if( $("#writer").val() == "" ) {
+		alert("작성자 이름을 입력해주세요");
+		$("#writer").focus();
 		return;
 	}
 	
