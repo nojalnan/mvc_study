@@ -45,6 +45,8 @@ a {
 							htmlString += "<td text align = center>" + re.writer + "</td>";
 							htmlString += "<td text align = center>" + re.cdate + "</td>";
 							htmlString += "</tr>";
+							htmlString += "<tr><td class='write' colspan='5' align='right'><button class='btn btn-primary'>";
+							htmlString += "글쓰기</button></td></tr>";
 						}
 						$("#boardTable tbody").html(htmlString);
 						$("#totalCount").html("전체 게시글 : " + result.totalCount + "개");
@@ -67,6 +69,9 @@ a {
 		$("a[class='movepage']").click(function() {
 			var page = this.getAttribute("data-page");
 			loadPage(page);
+		});
+		$("tr>td[class='write']").click(function() {
+			location.href = "/main/write.do?";
 		});
 	}
 

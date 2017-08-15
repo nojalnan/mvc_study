@@ -47,4 +47,23 @@
 		DELETE BOARD_INFO WHERE BINUM = #{binum}
 	</delete>
 	
+	<insert id="insertBoardItem" parameterType="mainVO">
+		INSERT INTO BOARD_INFO
+		(
+			BINUM,
+        	TITLE,
+        	CONTENT,
+        	WRITER,
+        	CDATE
+		)
+		VALUES
+		(
+			S_BOARD_INFO.NEXTVAL,
+			#{title},
+        	#{content},
+        	#{writer},
+        	SYSDATE
+    	);
+	</insert>
+	
 </mapper>

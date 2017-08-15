@@ -34,6 +34,9 @@
 									<td>${item.cdate}</td>
 								</tr>
 							</c:forEach>
+							<tr>
+								<td colspan="5" align="right"><button class="btn btn-primary">글쓰기</button></td>
+							</tr>
 						</tbody>
 					</table>
 				</div>

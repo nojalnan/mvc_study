@@ -75,6 +75,12 @@ public class MainController {
 		int result = mainService.updateBoardItem(mainVO);
 		return "redirect:/main/view.do?binum=" + mainVO.getBinum();
 	}
+	
+	@RequestMapping(value = "/main/write.do")
+	public String insert(MainVO mainVO, Model model) {
+		int result = mainService.insertBoardItem(mainVO);
+		return "/main/write";
+	}
 
 	@RequestMapping(value = "/main/delete.do")
 	public String delete(MainVO mainVO, Model model) {
