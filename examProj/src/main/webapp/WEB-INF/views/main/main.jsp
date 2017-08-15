@@ -35,7 +35,8 @@
 								</tr>
 							</c:forEach>
 							<tr>
-								<td colspan="5" align="right"><button class="btn btn-primary">글쓰기</button></td>
+								<td colspan="5" align="right">
+								<button class="btn btn-primary" onclick="location.href='/main/write.do'">글쓰기</button></td>		
 							</tr>
 						</tbody>
 					</table>
