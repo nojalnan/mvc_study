@@ -45,9 +45,9 @@ a {
 							htmlString += "<td text align = center>" + re.writer + "</td>";
 							htmlString += "<td text align = center>" + re.cdate + "</td>";
 							htmlString += "</tr>";
-							htmlString += "<tr><td class='write' colspan='5' align='right'><button class='btn btn-primary'>";
-							htmlString += "글쓰기</button></td></tr>";
 						}
+						htmlString += "<tr><td class='write' colspan='5' align='right'><button class='btn btn-primary'>";
+						htmlString += "글쓰기</button></td></tr>";
 						$("#boardTable tbody").html(htmlString);
 						$("#totalCount").html("전체 게시글 : " + result.totalCount + "개");
 						createPageing(result.totalCount, page);
