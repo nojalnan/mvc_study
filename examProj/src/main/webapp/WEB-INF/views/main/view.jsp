@@ -8,8 +8,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Home</title>
-<script type="text/javascript"
-	src="/resources/js/jquery/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="/resources/js/main/view.js"></script>
 </head>
 <body>
@@ -39,9 +37,12 @@
 				</tr>
 			</tbody>
 		</table>
-		<a href="/main/modify.do?binum=${item.binum}">수정</a> 
-		<a href="javascript:deleteCheck();">삭제</a>
-		<a href="/main/main.do">목록</a>
+		<ul class="nav nav-pills">
+		<li><a href="/main/modify.do?binum=${item.binum}">수정</a></li>
+		<li><a href="javascript:deleteCheck();">삭제</a></li>
+		<li><a href="/main/main.do">main 목록</a></li>
+		<li><a href="/main/ajax.do">ajax 목록</a></li>
+		</ul>
 	</div>
 
 	<input type="hidden" id="binum" value="${item.binum}" />

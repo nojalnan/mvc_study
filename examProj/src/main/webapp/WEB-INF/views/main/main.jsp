@@ -4,6 +4,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <title>자유게시판</title>
+<style>
+.view {
+	cursor: pointer;
+}
+</style>
 <body style="width: 800px; height: 480px">
 	<table>
 		<nav class="navbar navbar-default">
@@ -27,7 +32,7 @@
 						<tbody>
 							<c:forEach items="${list}" var="item" varStatus="status">
 								<tr align="center">
-									<td><a href="/main/view.do?binum=${item.binum}">
+									<td class='view'><a href="/main/view.do?binum=${item.binum}">
 											${item.rn} </a></td>
 									<td>${item.title}</td>
 									<td>${item.writer}</td>

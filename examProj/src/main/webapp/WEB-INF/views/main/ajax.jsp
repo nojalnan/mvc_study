@@ -39,7 +39,7 @@ a {
 						for (var i = 0; i < result.boardList.length; i++) {
 							var re = result.boardList[i];
 							htmlString += "<tr>";
-							htmlString += "<td class='view' text align = center data-rn='" + re.rn + "'><a>"
+							htmlString += "<td class='view' text align = center data-binum='" + re.binum + "'><a>"
 									+ re.rn + "</a></td>";
 							htmlString += "<td text align = center>" + re.title + "</td>";
 							htmlString += "<td text align = center>" + re.writer + "</td>";
@@ -63,8 +63,8 @@ a {
 	}
 	function setEvent() {
 		$("tr>td[class='view']").click(function() {
-			var rn = this.getAttribute("data-rn");
-			location.href = "/main/view.do?binum=" + rn;
+			var binum = this.getAttribute("data-binum");
+			location.href = "/main/view.do?binum=" + binum;
 		});
 		$("a[class='movepage']").click(function() {
 			var page = this.getAttribute("data-page");
