@@ -6,7 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://js.arcgis.com/3.21/dijit/themes/claro/claro.css">
 <link rel="stylesheet" href="https://js.arcgis.com/3.21/esri/css/esri.css">
+<link rel="stylesheet" href="/resources/css/layout.css" />
 <style>
   html, body, #map {
     height: 100%;
@@ -20,9 +22,29 @@
 	
   	require(["esri/map",
   	         "esri/layers/ArcGISDynamicMapServiceLayer",
-  	         "esri/layers/ImageParameters"
+  	         "esri/layers/ImageParameters",
+	  	     "dojo/ready",
+	  	     "dojo/parser",
+	  	     "dijit/layout/BorderContainer",
+	  	     "dijit/layout/ContentPane",
+	  	     "esri/urlUtils",
+	  	     "esri/arcgis/utils",
+	  	     "dojo/dom",
+	  	     "dojo/_base/array",
+	         "esri/dijit/editing/Editor",
+	  	     "dojo/domReady!"
   	         ], function(
-  	        		 Map, ArcGISDynamicMapServiceLayer, ImageParameters) {
+  	        		 Map, ArcGISDynamicMapServiceLayer, ImageParameters,
+  	        		 ready,
+  	              	 parser,
+	  	             BorderContainer,
+	  	             ContentPane,
+	  	             urlUtils,
+	  	             arcgisUtils,
+	  	             dom,
+	  	             array,
+  	                 Editor
+  	                 ) {
     					// code to create the map and add a basemap will go here
     					map = new Map("map", {
     					sliderOrientation : "horizontal"
