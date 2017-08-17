@@ -106,5 +106,10 @@ public class MainController {
 		result.put("boardList", mainService.getListResult(page));
 		return result;
 	}
+	
+	@RequestMapping(value = "/main/map.do")
+	public String map(Model model) {
+		return "/map/map_view";
+	}
 
 }

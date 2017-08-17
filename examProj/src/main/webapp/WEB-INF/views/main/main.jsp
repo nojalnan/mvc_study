@@ -17,6 +17,7 @@
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="/main/ajax.do">ajax 화면 전환</a></li>
+						<li><a href="/main/map.do">지도 보기</a></li>
 						<li><p class="navbar-text">전체 게시글 : ${totalCount}개</p></li>
 					</ul>
 					<table id="table" data-height="460"
