@@ -20,6 +20,7 @@
 <script>
 	var map;
 	var toolbar;
+	var graphic
 	dojo.require("esri.map");
 	dojo.require("esri.toolbars.draw");
 	dojo.require("esri.symbols.SimpleFillSymbol")
@@ -33,7 +34,7 @@
 			 var symbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID,
 					  new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_DASHDOT,
 					  new esri.Color([255,0,0]), 2),new esri.Color([255,255,0,0.25]));
-			 var graphic = new esri.Graphic(geometry, symbol);
+			 graphic = new esri.Graphic(geometry, symbol);
 			 map.graphics.add(graphic); 
 		 });
 		 var dynamicMSLayer = new esri.layers.ArcGISTiledMapServiceLayer("http://gis.edumac.kr:6080/arcgis/rest/services/EDUMAC/EDU_CACHEDMAP_LAYER/MapServer");
@@ -53,13 +54,13 @@
 	function drawEnd() {
 		toolbar.deactivate();
 	}
-	
 </script>
 </head>
 <body class="claro">
 	<a href="javascript:addLayer()">레이어 추가</a>
 	<a href="javascript:drawStart()">그리기 시작</a>
 	<a href="javascript:drawEnd()">그리기 완료</a>
+	<a href="javascript:createBuffer()">버퍼 생성</a>
   <div id="map"></div>
 </body>
 </html>
