@@ -20,9 +20,11 @@
 <script>
 	var map;
 	var toolbar;
+	var queryTask;
 	dojo.require("esri.map");
 	dojo.require("esri.toolbars.draw");
 	dojo.require("esri.symbols.SimpleFillSymbol")
+	dojo.require("esri.tasks.query");
 	dojo.addOnLoad(init);
 	
 	function init(){
@@ -38,28 +40,44 @@
 		 });
 		 var dynamicMSLayer = new esri.layers.ArcGISTiledMapServiceLayer("http://gis.edumac.kr:6080/arcgis/rest/services/EDUMAC/EDU_CACHEDMAP_LAYER/MapServer");
 		 map.addLayer(dynamicMSLayer);
-	}
-	
-	function addLayer() {
-		var scheval = new esri.layers.ArcGISDynamicMapServiceLayer("http://gis.edumac.kr:6080/arcgis/rest/services/SCHEVAL_2016/EDU_DLAYER_SCHEVAL/MapServer");
-		map.addLayer(scheval);
-	}
-	
-	function drawStart() {
-		toolbar.activate(esri.toolbars.Draw.POLYGON);
+		 
 		
 	}
 	
+	function runQuery() {
+		queryTask = new esri.tasks.QueryTask(
+				"http://gis.edumac.kr:6080/arcgis/rest/services/SCHEVAL_2016/EDU_DLAYER_SCHEVAL/MapServer");
+		var query = new esri.tasks.Query();
+			query.where = "SCH_CLS = '대학교'";
+			query.outSpatialReference = {
+				wkid : 102100
+			};
+			query.returnGeometry = true;
+			query.outFields = [ "SCH_CLS" ];
+			queryTask.execute(query, graphic);
+	}
+
+	function addLayer() {
+		var scheval = new esri.layers.ArcGISDynamicMapServiceLayer(
+				"http://gis.edumac.kr:6080/arcgis/rest/services/SCHEVAL_2016/EDU_DLAYER_SCHEVAL/MapServer");
+		map.addLayer(scheval);
+	}
+
+	function drawStart() {
+		toolbar.activate(esri.toolbars.Draw.POLYGON);
+
+	}
+
 	function drawEnd() {
 		toolbar.deactivate();
 	}
-	
 </script>
 </head>
 <body class="claro">
 	<a href="javascript:addLayer()">레이어 추가</a>
 	<a href="javascript:drawStart()">그리기 시작</a>
 	<a href="javascript:drawEnd()">그리기 완료</a>
+	<a href="javascript:runQuery()">쿼리실행</a>
   <div id="map"></div>
 </body>
 </html>
