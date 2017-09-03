@@ -20,7 +20,6 @@
 <script>
 	var map;
 	var toolbar;
-	var queryTask;
 	dojo.require("esri.map");
 	dojo.require("esri.toolbars.draw");
 	dojo.require("esri.symbols.SimpleFillSymbol")
@@ -40,21 +39,17 @@
 		 });
 		 var dynamicMSLayer = new esri.layers.ArcGISTiledMapServiceLayer("http://gis.edumac.kr:6080/arcgis/rest/services/EDUMAC/EDU_CACHEDMAP_LAYER/MapServer");
 		 map.addLayer(dynamicMSLayer);
-		 
 		
 	}
 	
 	function runQuery() {
-		queryTask = new esri.tasks.QueryTask(
+		
+		var queryTask = new esri.tasks.QueryTask(
 				"http://gis.edumac.kr:6080/arcgis/rest/services/SCHEVAL_2016/EDU_DLAYER_SCHEVAL/MapServer");
 		var query = new esri.tasks.Query();
-			query.where = "SCH_CLS = '대학교'";
-			query.outSpatialReference = {
-				wkid : 102100
-			};
-			query.returnGeometry = true;
-			query.outFields = [ "SCH_CLS" ];
-			queryTask.execute(query, graphic);
+			//query.where = "SCH_CLS = '초등학교'";
+			queryTask.execute(query,function(results){
+			console.log(results)});
 	}
 
 	function addLayer() {
