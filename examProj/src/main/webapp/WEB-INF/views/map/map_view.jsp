@@ -133,6 +133,7 @@
 				map.setExtent(zoomExtent);
 		});
 	}
+	
 </script>
 </head>
 <body class="claro">
