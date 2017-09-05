@@ -22,6 +22,7 @@
 	var toolbar;
 	var graphic
 	dojo.require("esri.map");
+	dojo.require("esri.tasks.query");
 	dojo.require("esri.toolbars.draw");
 	dojo.require("esri.symbols.SimpleFillSymbol")
 	dojo.addOnLoad(init);
@@ -46,6 +47,26 @@
 		map.addLayer(scheval);
 	}
 	
+	function runQuery() {
+		var queryTask = new esri.tasks.QueryTask("http://gis.edumac.kr:6080/arcgis/rest/services/SCHEVAL_2016/EDU_DLAYER_SCHEVAL/MapServer");
+		var query = new esri.tasks.Query();
+		query.where = "SCH_CLS = '초등학교'"; 
+		queryTask.executeForIds(query,function(results){
+		    console.log(results);
+		  });
+		
+	}
+	
+	function executeQueryTask(event) {
+		  // When the user clicks on a map, the onClick event returns the event point 
+		  // where the user clicked. The event contains mapPoint (esri.geometry.Point)
+
+		  query.geometry = event.mapPoint;
+
+		  //Execute task
+		  queryTask.execute(query, showResults);
+		}
+	
 	function drawStart() {
 		toolbar.activate(esri.toolbars.Draw.POLYGON);
 		
@@ -60,7 +81,7 @@
 	<a href="javascript:addLayer()">레이어 추가</a>
 	<a href="javascript:drawStart()">그리기 시작</a>
 	<a href="javascript:drawEnd()">그리기 완료</a>
-	<a href="javascript:createBuffer()">버퍼 생성</a>
+	<a href="javascript:runQuery()">쿼리 실행</a>
   <div id="map"></div>
 </body>
 </html>
