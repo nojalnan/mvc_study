@@ -21,14 +21,18 @@
 <script src="https://js.arcgis.com/3.21/"></script>
 <script>
 	var map;
-	var toolbar;
+	var toolbar, geometryService;
 	dojo.require("esri.map");
 	dojo.require("esri.toolbars.draw");
 	dojo.require("esri.symbols.SimpleFillSymbol")
 	dojo.require("esri.tasks.query");
+	dojo.require("esri.tasks.AreasAndLengthsParameters");
+	dojo.require("esri.tasks.geometry");
+	dojo.require("esri.dijit.editing.editOperation");
 	dojo.addOnLoad(init);
 	
 	function init(){
+		geometryService = new esri.tasks.GeometryService("http://gis.edumac.kr:6080/arcgis/rest/services/Utilities/Geometry/GeometryServer");
 		 map = new esri.Map("map");
 		 toolbar = new esri.toolbars.Draw(map);
 		 dojo.connect(toolbar, "onDrawEnd", function(geometry){
@@ -36,13 +40,29 @@
 			 var graphic = new esri.Graphic(geometry, getPolygonSymbol());
 			 map.graphics.add(graphic);
 			 
+			 /*lengths(geometry, function(result) {
+				 console.log("result", result);
+			 });*/
+			 
+			 // 거리와 면적 계산
+
+			 //areasAndLength(geometry);
+			 //union(geometry);
+			 
+			 // 학교 영역 검색
 			 getSchoolBoundary(geometry, function(result) {
 				 console.log("result", result);
+				 var geometryAry = [];
 				 for( var i=0;i<result.features.length;i++ ) {
-					  result.features[i].symbol = getPolygonSymbol();
-						map.graphics.add(result.features[i]);
+					 geometryAry.push( result.features[i].geometry );
+					//result.features[i].symbol = getPolygonSymbol();
+						//map.graphics.add(result.features[i]);
 				  }
+				  union(geometryAry);
+				  buffer(geometry);
 			 })
+			 
+			
 			 
 			 /*
 			 var query = new Query();
@@ -65,6 +85,17 @@
 				  new esri.Color([255,0,0]), 2),new esri.Color([255,255,0,0.25]));
 	}
 	
+	function getPolygonSymbol2() {
+		return new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID,
+				  new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_DASHDOT,
+				  new esri.Color([0,0,0]), 2),new esri.Color([255,255,0,0.25]));
+	}
+	
+	function getPolylineSymbol() {
+		return new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_DASHDOT,
+				  new esri.Color([255,0,0]), 2);
+	}
+	
 	function addLayer() {
 		var scheval = new esri.layers.ArcGISDynamicMapServiceLayer(
 				"http://gis.edumac.kr:6080/arcgis/rest/services/SCHEVAL_2016/EDU_DLAYER_SCHEVAL/MapServer");
@@ -73,6 +104,7 @@
 
 	function drawStart() {
 		toolbar.activate(esri.toolbars.Draw.POLYGON);
+		//toolbar.activate(esri.toolbars.Draw.POLYLINE);
 
 	}
 
@@ -95,9 +127,11 @@
 		console.log("result", result)
 	}
 	
+	// 거리, 면적계산
+	
 	function getSchoolBoundary( geometry, func ) {
 		var query = new esri.tasks.Query();
-		var queryTask = new esri.tasks.QueryTask("http://gis.edumac.kr:6080/arcgis/rest/services/SCHEVAL_2016/EDU_DLAYER_SCHEVAL/MapServer/10");
+		var queryTask = new esri.tasks.QueryTask("http://gis.edumac.kr:6080/arcgis/rest/services/SCHEVAL_2016/EDU_DLAYER_SCHEVAL/MapServer/67");
 		//query.where = "CITY_ID = '272'";
 		//query.outSpatialReference = {wkid:102100};
 		query.geometry = geometry;
@@ -105,6 +139,50 @@
 		query.outFields = ["*"];
 		queryTask.execute(query, function(result) {
 			  func.call( this, result );
+		});
+	}
+	
+	// union
+	function union(geometrys) {
+		geometryService.union(geometrys, function(geometry) {
+			console.log("union", geometry);
+			var graphic = new esri.Graphic(geometry, getPolygonSymbol2());
+			map.graphics.add(graphic);
+		});
+		
+	}
+	
+	function buffer(geometry) {
+		var params = new esri.tasks.BufferParameters();
+		params.geometries  = [ geometry ];
+
+		params.distances = [ 100 ];
+		params.unit = esri.tasks.GeometryService.UNIT_METER;
+		geometryService.buffer(params,function(result){
+			console.log("result", result);
+			var graphic = new esri.Graphic(result[0], getPolygonSymbol2());
+			map.graphics.add(graphic);
+		});
+	}
+	
+	// 길이계산
+	/*function lengths(geometry) {
+		var lengthParams = new esri.tasks.LengthsParameters();
+		lengthParams.polylines = [geometry];
+		lengthParams.lengthUnit = esri.tasks.GeometryService.UNIT_METER;
+		lengthParams.geodesic = true;
+		geometryService.lengths(lengthParams, function(result) {
+			console.log("lengths", result);
+		});
+	}*/
+	// 면적계산
+	function areasAndLength(geometry) {
+		var areasAndLengthParams = new esri.tasks.AreasAndLengthsParameters();
+		areasAndLengthParams.lengthUnit = esri.tasks.GeometryService.UNIT_KILOMETER;
+		areasAndLengthParams.areaUnit = esri.tasks.GeometryService.UNIT_KILOMETER;
+		areasAndLengthParams.polygons = [geometry];
+		geometryService.areasAndLengths(areasAndLengthParams, function(result) {
+			console.log("areasAndLength", result);
 		});
 	}
 	
