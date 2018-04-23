@@ -8,38 +8,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Hello Spring Blog</title>
-<link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="/webjars/bootstrap/4.1.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/webjars/font-awesome/5.0.10/css/font-awesome.min.css">
 <link rel="stylesheet" href="/webjars/origoni-startbootstrap-clean-blog/1.0.3/css/clean-blog.min.css">
 </head>
 <body>
 	<!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
-               <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarNav">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarNav">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button> -->
-                <a class="navbar-brand" href="/blog">Start Bootstrap</a>
+                </button>
+                <a class="navbar-brand" href="/post/list">SpringBlog</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="nav-link" href="/blog">Home <span class="sr-only">(current)</span></a>
+                        <a href="/post/write">Write Post</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="#about.html">About</a>
+                        <a href="https://github.com/nojalnan/mvc_study.git">Java Study GitHub</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="/post">Sample Post</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="#contact.html">Contact</a>
+                        <a href="localhost:8080/blog">Blog Home</a>
                     </li>
                 </ul>
             </div>
@@ -55,9 +53,9 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h1>Start Blog</h1>
+                        <h1>Spring Blog</h1>
                         <hr class="small">
-                        <span class="subheading">A Start Blog Theme by Bootstrap</span>
+                        <span class="subheading">Spring Blog form Nows</span>
                     </div>
                 </div>
             </div>
@@ -65,7 +63,7 @@
     </header>
 
     <!-- Main Content -->
-        <div class="container">
+    <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             
@@ -73,16 +71,16 @@
 				<div class="post-preview">
                     <a href="/post/${post.id}">
                         <h2 class="post-title">
-                            ${post.subject}
+                            <c:out value="${post.title}" escapeXml="true"></c:out>
                         </h2>
                         <h3 class="post-subtitle">
-                            부 제목
+                            <c:out value="${post.subtitle}" escapeXml="true"></c:out>
                         </h3>
                     </a>
                     <p class="post-meta">Posted by <a href="#">Nows</a> on ${post.regDate}</p>
                 </div>
                 <hr>
-					</c:forEach>
+			</c:forEach>
 			
                 <!-- Pager -->
                 <ul class="pager">
@@ -92,7 +90,7 @@
                 </ul>
             </div>
         </div>
-	</div>
+    </div>
 
     <hr>
 
@@ -103,15 +101,7 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <ul class="list-inline text-center">
                         <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
+                            <a href="https://www.facebook.com/millkyc">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
@@ -119,22 +109,30 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="https://github.com/origoni">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                                 </span>
                             </a>
                         </li>
+                        <li>
+                            <a href="https://twitter.com/origoni">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
                     </ul>
-                    <p class="copyright text-muted">Copyright &copy; Your Website 2018</p>
+                    <p class="copyright text-muted">Powered By <a href="localhost:8080/blog">Nows</a> | Skin designed by <a href="http://startbootstrap.com/template-overviews/clean-blog/">Start Bootstrap</a></p>
                 </div>
             </div>
         </div>
     </footer>
 
-	<script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
-	<script src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	<script src="/webjars/jquery/3.3.1-1/dist/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/4.1.0/dist/js/bootstrap.min.js"></script>
 	<script src="/webjars/origoni-startbootstrap-clean-blog/1.0.3/js/clean-blog.min.js"></script>
 </body>
 </html>

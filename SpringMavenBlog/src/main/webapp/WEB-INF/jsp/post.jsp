@@ -8,38 +8,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Hello Spring Blog</title>
-<link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="/webjars/bootstrap/4.1.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="/webjars/origoni-startbootstrap-clean-blog/1.0.3/css/clean-blog.min.css">
 </head>
 <body>
-	<!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
-               <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarNav">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarNav">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button> -->
-                <a class="navbar-brand" href="/blog">Start Bootstrap</a>
+                </button>
+                <a class="navbar-brand" href="index.html">Start Bootstrap</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="nav-link" href="/blog">Home <span class="sr-only">(current)</span></a>
+                        <a href="/blog">Home</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="#about.html">About</a>
+                        <a href="#about.html">About</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="/post">Sample Post</a>
+                        <a href="/post">Sample Post</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="#contact.html">Contact</a>
+                        <a href="#contact.html">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -50,49 +50,30 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-color: #777799">
+    <header class="intro-header" style="background-image: url('http://ironsummitmedia.github.io/startbootstrap-clean-blog/img/post-bg.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>Start Blog</h1>
-                        <hr class="small">
-                        <span class="subheading">A Start Blog Theme by Bootstrap</span>
+                    <div class="post-heading">
+                        <h1><c:out value="${post.title}" escapeXml="true"></c:out></h1>
+                        <h2 class="subheading"><c:out value="${post.subtitle}" escapeXml="true"></c:out></h2>
+                        <span class="meta">Posted by <a href="#">Nows</a> on ${post.regDate}</span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- Post Content -->
+    <article>
         <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            
-			<c:forEach var="post" items="${postList}">
-				<div class="post-preview">
-                    <a href="/post/${post.id}">
-                        <h2 class="post-title">
-                            ${post.subject}
-                        </h2>
-                        <h3 class="post-subtitle">
-                            부 제목
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">Nows</a> on ${post.regDate}</p>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    ${post.content}
                 </div>
-                <hr>
-					</c:forEach>
-			
-                <!-- Pager -->
-                <ul class="pager">
-                    <li class="next">
-                        <a href="#">Older Posts &rarr;</a>
-                    </li>
-                </ul>
             </div>
         </div>
-	</div>
+    </article>
 
     <hr>
 
